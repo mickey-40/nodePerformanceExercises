@@ -10,17 +10,16 @@ function delay(duration){
 }
 
 app.get('/', (req, res) => {
-    // Things that slow down or blocke event loop
-    // JSON.stringify({} => "{}")
-    // JSON.parse("{}" => {})
-    // [5,1,2,3,4].sort()
-    res.send('Performance example')
+    res.send(`Performance example: ${process.pid}`)
 });
 
 app.get('/timer', (req, res) => {
-    // delay the response
     delay(9000);
-    res.send('Ding ding ding!');
+    res.send(`Ding ding ding! ${process.pid}`);
 });
 
+console.log('Running server.js...');
+console.log('Worker process has started.');
 app.listen(3000);
+
+
